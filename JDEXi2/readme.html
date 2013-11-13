@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+ <title>JDEXi: Open-source DEXi Java Library</title>
+ <meta name="author" content="Marko Bohanec"/>
+ <meta name="copyright" content="Marko Bohanec"/>
+ <meta name="description" content="JDEXi WWW"/>
+ <meta name="keywords"
+   content="DEXi, DEX, decision support, decision-making, model, modeling, modelling, multi-attribute, multi-criteria, java, library"/>
+ <meta name="geo.placename" content="Ljubljana, Slovenia, Europe"/>
+ <meta name="geo.country" content="SI"/>
+ <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-2"/>
+ <meta http-equiv="Content-Language" content="en"/>
+ <link rev="Made" href="mailto:marko.bohanec@ijs.si"/>
+ <link rel="StyleSheet" href="DEXi/css/DEXi.css" type="text/css"/>
+ <link rel="Shortcut icon" href="DEXi/images/DEXi2.ico"/>
+</head>
+
+<body>
+
+<h1>
+JDEXi: Open-source DEXi Java Library
+</h1>
+
+<h3>Version 2.0</h3>
+
+<hr>
+
+<h2>Purpose</h2>
+
+<p><a href="DEXi/JDEXi2.zip">JDEXi2.zip</a> contains a library of 
+open-source Java classes that implement the evaluation of decision 
+alternatives based on qualitative multi-attribute models produced by 
+<a href="http://kt.ijs.si/MarkoBohanec/dexi.html">DEXi</a> software.</p> 
+
+<p> JDEXi (version 2) supports:
+<ul>
+<li>parsing and reading DEXi models from .dxi files (XML format) [constructor Model()]</li>
+<li>clearing and setting model input values [methods setInputValue(s)...]</li>
+<li>carrying out the evaluation [methods evaluate()...]</li>
+<li>obtaining evaluation results [methods getOutputValue(s)...]</li>
+</ul>
+
+<p>JDEXi2 does not support any modification of models; DEXi software should be used for that purpose.</p> 
+
+<hr>
+
+<p>Authors: Marko Bohanec, Dušan Omerčević, Andrej Kogovšek<p>
+
+<p>
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.</p>
+
+<p>
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+Lesser General Public License for more details.</p>
+
+<hr>
+
+<h2>Contents of JDEXi2.zip</h2>
+
+bin/ - contains compiled java files<br/>
+src/ - contains java source files<br/>
+doc/ - contains javadoc<br/>
+JDEXi.jar - JDEXi classes; see javadoc for the list of all classes<br/>
+JDEXi2Eval.jar - runnable jar for running JDEXi (command-line)<br/>
+Licence.txt<br/>
+lesser.txt - GNU LESSER GENERAL PUBLIC LICENSE<br/>
+Car.dxi - a sample DEXi file (car selection demo)</br>
+Readme.html - this file
+
+<h2>JDEXi2Eval.jar</h2>
+
+Runnable jar for running JDEXi application through the command line. It takes 2 mandatory parameters:
+
+<ol>
+<li> DEXi_file_name: file containing a DEXi model (.dxi)</li>
+<li> Variables: a ";"-separated list of name=value pairs</li> </ol>
+
+<h3>Example</h3>
+
+<code>
+java -jar JDEXi2Eval.jar Car.dxi "BUY.PRICE=low;MAINT.PRICE=low;#PERS=more;#DOORS=more;LUGGAGE=big;SAFETY=high"
+</code>
+
+<h2>Version information </h2>
+
+<h3>Previous versions</h3>
+
+<p><a href="jdexi1.html">JDEXi version 1</a> (2004)</p>
+
+<h3>Version 2.0 (2012)</h3>
+
+<ul>
+<li>Port to java 1.7:</li>
+<ul>
+<li>Using templates</li>
+<li>Class Vector --> ArrayList</li>
+</ul>
+<li>Model extensions (for compatibility with advanced/new DEXi features):</li>
+<ul>
+<li>Link attributes</li>
+</ul>
+<li>Extensions of decision alternative evaluations:</li>
+<ul>
+<li>New methods for setting and getting model variables:</li>
+<ul>
+<li>Typical new evaluation sequence:</li>
+<ul>
+<li>model.clearInputValues()</li>
+<li>model.setInputValue(s)...</li>
+<li>model.evaluate()</li>
+<li>model.getOutputValue(s)...</li>
+</ul>
+</ul>
+<li>New set of robust evaluate() methods that:</li>
+<ul>
+<li>Handle incomplete models (missing scales, functions)</li>
+<li>Take into account under-specified functions (low/high intervals)</li>
+<li>Carry out three types of distribution-based evaluations:</li>
+<ul>
+<li>Model.Evaluation.SET: set-based (the same as DEXi)</li>
+<li>Model.Evaluation.PROB: probabilistic (not supported by DEXi)</li>
+<li>Model.Evaluation.FUZZY: fuzzy (not supported by DEXi)</li>
+</ul>
+</ul>
+</ul>
+<li>Improved documentation.</li>
+</ul>
+
+<hr>
+
+<p>Maintained by <a href="http://kt.ijs.si/MarkoBohanec/mare.html">Marko Bohanec</a>.
+Comments and suggestions to <a href="mailto:marko.bohanec@ijs.si?subject=JDEXi">marko.bohanec@ijs.si</a>.
+
+<p>Last update: November 12, 2012</p>
+
+</body>
+</html>
